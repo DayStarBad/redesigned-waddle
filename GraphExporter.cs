@@ -1,13 +1,14 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using CodeKnowledgeGraphGenerator.Models;
 
 namespace CodeKnowledgeGraphGenerator
 {
     public class GraphExporter
     {
-        public static void ExportToJson(Dictionary<string, CodeEntity> entities, 
-                                      List<CodeRelationship> relationships, 
+        public static void ExportToJson(Dictionary<string, CodeEntity> entities,
+                                      List<CodeRelationship> relationships,
                                       string outputPath)
         {
             var graph = new
@@ -20,8 +21,8 @@ namespace CodeKnowledgeGraphGenerator
             File.WriteAllText(outputPath, json);
         }
 
-        public static void ExportToD3Format(Dictionary<string, CodeEntity> entities, 
-                                         List<CodeRelationship> relationships, 
+        public static void ExportToD3Format(Dictionary<string, CodeEntity> entities,
+                                         List<CodeRelationship> relationships,
                                          string outputPath)
         {
             var nodes = new List<object>();
@@ -49,7 +50,7 @@ namespace CodeKnowledgeGraphGenerator
             foreach (var relationship in relationships)
             {
                 // Only include relationships where both source and target exist
-                if (entities.ContainsKey(relationship.SourceId) && 
+                if (entities.ContainsKey(relationship.SourceId) &&
                     entities.ContainsKey(relationship.TargetId))
                 {
                     links.Add(new

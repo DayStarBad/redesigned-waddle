@@ -119,8 +119,6 @@
             .then(data => createGraph(data));
 
         function createGraph(data) {
-            console.log("Loaded data:", data); // Debug output
-            
             const width = window.innerWidth;
             const height = window.innerHeight;
             const tooltip = d3.select('.tooltip');

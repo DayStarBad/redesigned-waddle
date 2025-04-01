@@ -1,315 +1,65 @@
 {
   "nodes": [
     {
-      "id": "eCommerce.API.Controllers.ProductController",
-      "name": "ProductController",
-      "group": "controller",
-      "namespace": "eCommerce.API.Controllers"
+      "id": "Finances.BudgetingApplication.Infrastructure.Data.BudgetingAppDbContext",
+      "name": "BudgetingAppDbContext",
+      "group": "class",
+      "namespaceName": "Finances.BudgetingApplication.Infrastructure.Data"
     },
     {
-      "id": "eCommerce.API.Controllers.OrderController",
-      "name": "OrderController",
-      "group": "controller",
-      "namespace": "eCommerce.API.Controllers"
-    },
-    {
-      "id": "eCommerce.API.Controllers.UserController",
-      "name": "UserController",
-      "group": "controller",
-      "namespace": "eCommerce.API.Controllers"
-    },
-    {
-      "id": "eCommerce.API.Controllers.CategoryController",
-      "name": "CategoryController",
-      "group": "controller",
-      "namespace": "eCommerce.API.Controllers"
-    },
-    {
-      "id": "eCommerce.Core.Services.ProductService",
-      "name": "ProductService",
-      "group": "service",
-      "namespace": "eCommerce.Core.Services"
-    },
-    {
-      "id": "eCommerce.Core.Services.OrderService",
-      "name": "OrderService",
-      "group": "service",
-      "namespace": "eCommerce.Core.Services"
-    },
-    {
-      "id": "eCommerce.Core.Services.UserService",
-      "name": "UserService",
-      "group": "service",
-      "namespace": "eCommerce.Core.Services"
-    },
-    {
-      "id": "eCommerce.Core.Services.CategoryService",
-      "name": "CategoryService",
-      "group": "service",
-      "namespace": "eCommerce.Core.Services"
-    },
-    {
-      "id": "eCommerce.Core.Services.AuthenticationService",
-      "name": "AuthenticationService",
-      "group": "service",
-      "namespace": "eCommerce.Core.Services"
-    },
-    {
-      "id": "eCommerce.Core.Interfaces.IProductService",
-      "name": "IProductService",
-      "group": "interface",
-      "namespace": "eCommerce.Core.Interfaces"
-    },
-    {
-      "id": "eCommerce.Core.Interfaces.IOrderService",
-      "name": "IOrderService",
-      "group": "interface",
-      "namespace": "eCommerce.Core.Interfaces"
-    },
-    {
-      "id": "eCommerce.Core.Interfaces.IUserService",
-      "name": "IUserService",
-      "group": "interface",
-      "namespace": "eCommerce.Core.Interfaces"
-    },
-    {
-      "id": "eCommerce.Core.Interfaces.ICategoryService",
-      "name": "ICategoryService",
-      "group": "interface",
-      "namespace": "eCommerce.Core.Interfaces"
-    },
-    {
-      "id": "eCommerce.Core.Interfaces.IAuthenticationService",
-      "name": "IAuthenticationService",
-      "group": "interface",
-      "namespace": "eCommerce.Core.Interfaces"
-    },
-    {
-      "id": "eCommerce.Core.Interfaces.IProductRepository",
-      "name": "IProductRepository",
-      "group": "interface",
-      "namespace": "eCommerce.Core.Interfaces"
-    },
-    {
-      "id": "eCommerce.Core.Interfaces.IOrderRepository",
-      "name": "IOrderRepository",
-      "group": "interface",
-      "namespace": "eCommerce.Core.Interfaces"
-    },
-    {
-      "id": "eCommerce.Core.Interfaces.IUserRepository",
-      "name": "IUserRepository",
-      "group": "interface",
-      "namespace": "eCommerce.Core.Interfaces"
-    },
-    {
-      "id": "eCommerce.Core.Interfaces.ICategoryRepository",
-      "name": "ICategoryRepository",
-      "group": "interface",
-      "namespace": "eCommerce.Core.Interfaces"
-    },
-    {
-      "id": "eCommerce.Infrastructure.Repositories.ProductRepository",
-      "name": "ProductRepository",
-      "group": "repository",
-      "namespace": "eCommerce.Infrastructure.Repositories"
-    },
-    {
-      "id": "eCommerce.Infrastructure.Repositories.OrderRepository",
-      "name": "OrderRepository",
-      "group": "repository",
-      "namespace": "eCommerce.Infrastructure.Repositories"
-    },
-    {
-      "id": "eCommerce.Infrastructure.Repositories.UserRepository",
-      "name": "UserRepository",
-      "group": "repository",
-      "namespace": "eCommerce.Infrastructure.Repositories"
-    },
-    {
-      "id": "eCommerce.Infrastructure.Repositories.CategoryRepository",
-      "name": "CategoryRepository",
-      "group": "repository",
-      "namespace": "eCommerce.Infrastructure.Repositories"
-    },
-    {
-      "id": "eCommerce.Core.Models.Product",
-      "name": "Product",
+      "id": "Finances.BudgetingApplication.Models.Account",
+      "name": "Account",
       "group": "model",
-      "namespace": "eCommerce.Core.Models"
+      "namespaceName": "Finances.BudgetingApplication.Models"
     },
     {
-      "id": "eCommerce.Core.Models.Order",
-      "name": "Order",
+      "id": "Finances.BudgetingApplication.Models.BankTransaction",
+      "name": "BankTransaction",
       "group": "model",
-      "namespace": "eCommerce.Core.Models"
+      "namespaceName": "Finances.BudgetingApplication.Models"
     },
     {
-      "id": "eCommerce.Core.Models.User",
-      "name": "User",
+      "id": "Finances.BudgetingApplication.Models.BudgetPlan",
+      "name": "BudgetPlan",
       "group": "model",
-      "namespace": "eCommerce.Core.Models"
+      "namespaceName": "Finances.BudgetingApplication.Models"
     },
     {
-      "id": "eCommerce.Core.Models.Category",
+      "id": "Finances.BudgetingApplication.Models.BudgetPlanItem",
+      "name": "BudgetPlanItem",
+      "group": "model",
+      "namespaceName": "Finances.BudgetingApplication.Models"
+    },
+    {
+      "id": "Finances.BudgetingApplication.Models.Category",
       "name": "Category",
       "group": "model",
-      "namespace": "eCommerce.Core.Models"
+      "namespaceName": "Finances.BudgetingApplication.Models"
     },
     {
-      "id": "eCommerce.Core.BaseEntity",
-      "name": "BaseEntity",
+      "id": "Finances.BudgetingApplication.Models.FinancialTransaction",
+      "name": "FinancialTransaction",
+      "group": "model",
+      "namespaceName": "Finances.BudgetingApplication.Models"
+    },
+    {
+      "id": "Finances.BudgetingApplication.Models.Tag",
+      "name": "Tag",
+      "group": "model",
+      "namespaceName": "Finances.BudgetingApplication.Models"
+    },
+    {
+      "id": "Finances.BudgetingApplication.Models.TransactionTag",
+      "name": "TransactionTag",
+      "group": "model",
+      "namespaceName": "Finances.BudgetingApplication.Models"
+    },
+    {
+      "id": "Finances.BudgetingApplication.Services.BankTransactionImporter",
+      "name": "BankTransactionImporter",
       "group": "class",
-      "namespace": "eCommerce.Core"
-    },
-    {
-      "id": "eCommerce.Core.BaseRepository",
-      "name": "BaseRepository",
-      "group": "class",
-      "namespace": "eCommerce.Core"
-    },
-    {
-      "id": "eCommerce.Core.Interfaces.IRepository",
-      "name": "IRepository",
-      "group": "interface",
-      "namespace": "eCommerce.Core.Interfaces"
+      "namespaceName": "Finances.BudgetingApplication.Services"
     }
   ],
-  "links": [
-    {
-      "source": "eCommerce.API.Controllers.ProductController",
-      "target": "eCommerce.Core.Interfaces.IProductService",
-      "type": "Depends"
-    },
-    {
-      "source": "eCommerce.API.Controllers.OrderController",
-      "target": "eCommerce.Core.Interfaces.IOrderService",
-      "type": "Depends"
-    },
-    {
-      "source": "eCommerce.API.Controllers.UserController",
-      "target": "eCommerce.Core.Interfaces.IUserService",
-      "type": "Depends"
-    },
-    {
-      "source": "eCommerce.API.Controllers.UserController",
-      "target": "eCommerce.Core.Interfaces.IAuthenticationService",
-      "type": "Depends"
-    },
-    {
-      "source": "eCommerce.API.Controllers.CategoryController",
-      "target": "eCommerce.Core.Interfaces.ICategoryService",
-      "type": "Depends"
-    },
-    {
-      "source": "eCommerce.Core.Services.ProductService",
-      "target": "eCommerce.Core.Interfaces.IProductService",
-      "type": "Implements"
-    },
-    {
-      "source": "eCommerce.Core.Services.OrderService",
-      "target": "eCommerce.Core.Interfaces.IOrderService",
-      "type": "Implements"
-    },
-    {
-      "source": "eCommerce.Core.Services.UserService",
-      "target": "eCommerce.Core.Interfaces.IUserService",
-      "type": "Implements"
-    },
-    {
-      "source": "eCommerce.Core.Services.CategoryService",
-      "target": "eCommerce.Core.Interfaces.ICategoryService",
-      "type": "Implements"
-    },
-    {
-      "source": "eCommerce.Core.Services.AuthenticationService",
-      "target": "eCommerce.Core.Interfaces.IAuthenticationService",
-      "type": "Implements"
-    },
-    {
-      "source": "eCommerce.Core.Services.ProductService",
-      "target": "eCommerce.Core.Interfaces.IProductRepository",
-      "type": "Depends"
-    },
-    {
-      "source": "eCommerce.Core.Services.OrderService",
-      "target": "eCommerce.Core.Interfaces.IOrderRepository",
-      "type": "Depends"
-    },
-    {
-      "source": "eCommerce.Core.Services.UserService",
-      "target": "eCommerce.Core.Interfaces.IUserRepository",
-      "type": "Depends"
-    },
-    {
-      "source": "eCommerce.Core.Services.CategoryService",
-      "target": "eCommerce.Core.Interfaces.ICategoryRepository",
-      "type": "Depends"
-    },
-    {
-      "source": "eCommerce.Infrastructure.Repositories.ProductRepository",
-      "target": "eCommerce.Core.Interfaces.IProductRepository",
-      "type": "Implements"
-    },
-    {
-      "source": "eCommerce.Infrastructure.Repositories.OrderRepository",
-      "target": "eCommerce.Core.Interfaces.IOrderRepository",
-      "type": "Implements"
-    },
-    {
-      "source": "eCommerce.Infrastructure.Repositories.UserRepository",
-      "target": "eCommerce.Core.Interfaces.IUserRepository",
-      "type": "Implements"
-    },
-    {
-      "source": "eCommerce.Infrastructure.Repositories.CategoryRepository",
-      "target": "eCommerce.Core.Interfaces.ICategoryRepository",
-      "type": "Implements"
-    },
-    {
-      "source": "eCommerce.Infrastructure.Repositories.ProductRepository",
-      "target": "eCommerce.Core.BaseRepository",
-      "type": "Inherits"
-    },
-    {
-      "source": "eCommerce.Infrastructure.Repositories.OrderRepository",
-      "target": "eCommerce.Core.BaseRepository",
-      "type": "Inherits"
-    },
-    {
-      "source": "eCommerce.Infrastructure.Repositories.UserRepository",
-      "target": "eCommerce.Core.BaseRepository",
-      "type": "Inherits"
-    },
-    {
-      "source": "eCommerce.Infrastructure.Repositories.CategoryRepository",
-      "target": "eCommerce.Core.BaseRepository",
-      "type": "Inherits"
-    },
-    {
-      "source": "eCommerce.Core.BaseRepository",
-      "target": "eCommerce.Core.Interfaces.IRepository",
-      "type": "Implements"
-    },
-    {
-      "source": "eCommerce.Core.Models.Product",
-      "target": "eCommerce.Core.BaseEntity",
-      "type": "Inherits"
-    },
-    {
-      "source": "eCommerce.Core.Models.Order",
-      "target": "eCommerce.Core.BaseEntity",
-      "type": "Inherits"
-    },
-    {
-      "source": "eCommerce.Core.Models.User",
-      "target": "eCommerce.Core.BaseEntity",
-      "type": "Inherits"
-    },
-    {
-      "source": "eCommerce.Core.Models.Category",
-      "target": "eCommerce.Core.BaseEntity",
-      "type": "Inherits"
-    }
-  ]
+  "links": []
 }
