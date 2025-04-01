@@ -13,7 +13,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
-
+grapth-data.json
 # Visual Studio cache/options directory
 .vs/
 .vscode/
