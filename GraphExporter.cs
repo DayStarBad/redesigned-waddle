@@ -37,14 +37,13 @@ namespace CodeKnowledgeGraphGenerator
                 else if (entity.Type == "Interface") group = "interface";
                 else if (entity.Namespace?.Contains(".Models") == true) group = "model";
                 else group = "class";
-
-                nodes.Add(new
-                {
-                    id = entity.Id,
-                    name = entity.Name,
-                    group,
-                    namespace = entity.Namespace
-                });
+            nodes.Add(new
+            {
+                id = entity.Id,
+                name = entity.Name,
+                group,
+                namespaceName = entity.Namespace  // This is the correct property name
+            });
             }
 
             foreach (var relationship in relationships)

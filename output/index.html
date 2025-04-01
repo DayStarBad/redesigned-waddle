@@ -119,6 +119,8 @@
             .then(data => createGraph(data));
 
         function createGraph(data) {
+            console.log("Loaded data:", data); // Debug output
+            
             const width = window.innerWidth;
             const height = window.innerHeight;
             const tooltip = d3.select('.tooltip');
@@ -217,7 +219,7 @@
                 tooltip.html(`
                     <strong>${d.name}</strong><br>
                     Type: ${d.group}<br>
-                    Namespace: ${d.namespace || 'N/A'}
+                    Namespace: ${d.namespaceName || 'N/A'}
                 `)
                 .style('left', (event.pageX + 10) + 'px')
                 .style('top', (event.pageY - 28) + 'px');
