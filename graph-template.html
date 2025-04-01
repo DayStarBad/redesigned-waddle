@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Code Knowledge Graph</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f5f5f5;
+        }
+        #graph {
+            width: 100vw;
+            height: 100vh;
+        }
+        .node {
+            stroke: #fff;
+            stroke-width: 1.5px;
+        }
+        .link {
+            stroke-opacity: 0.6;
+        }
+        .node-label {
+            font-size: 10px;
+            font-family: sans-serif;
+            pointer-events: none;
+        }
+        .tooltip {
+            position: absolute;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .legend {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            margin: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #3e8e41;
+        }
+        input[type="range"] {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="graph"></div>
+    <div class="tooltip"></div>
+    
+    <div class="controls">
+        <h3>Controls</h3>
+        <div>
+            <label>Force Strength:</label>
+            <input type="range" id="forceStrength" min="10" max="1000" value="300">
+        </div>
+        <div>
+            <label>Link Distance:</label>
+            <input type="range" id="linkDistance" min="20" max="300" value="100">
+        </div>
+        <div>
+            <button id="resetZoom">Reset Zoom</button>
+        </div>
+        <div>
+            <button id="expandAll">Expand All</button>
+        </div>
+    </div>
+    
+    <div class="legend">
+        <h3>Legend</h3>
+        <div><span style="display:inline-block;width:12px;height:12px;background:#ff7700;margin-right:5px;"></span> Controller</div>
+        <div><span style="display:inline-block;width:12px;height:12px;background:#4CAF50;margin-right:5px;"></span> Service</div>
+        <div><span style="display:inline-block;width:12px;height:12px;background:#2196F3;margin-right:5px;"></span> Repository</div>
+        <div><span style="display:inline-block;width:12px;height:12px;background:#9C27B0;margin-right:5px;"></span> Interface</div>
+        <div><span style="display:inline-block;width:12px;height:12px;background:#607D8B;margin-right:5px;"></span> Class</div>
+        <div><span style="display:inline-block;width:12px;height:12px;background:#FFC107;margin-right:5px;"></span> Model</div>
+        <div style="margin-top:10px;border-top:1px solid #ccc;padding-top:10px;">
+            <div><span style="display:inline-block;width:40px;height:2px;background:#ff7700;margin-right:5px;"></span> Inherits</div>
+            <div><span style="display:inline-block;width:40px;height:2px;background:#4CAF50;margin-right:5px;"></span> Implements</div>
+            <div><span style="display:inline-block;width:40px;height:2px;background:#999;margin-right:5px;"></span> Depends</div>
+        </div>
+    </div>
+    
+    <script>
+        // Load the graph data
+        fetch('graph-data.json')
+            .then(response => response.json())
+            .then(data => createGraph(data));
+
+        function createGraph(data) {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const tooltip = d3.select('.tooltip');
+
+            // Create a force-directed graph
+            const simulation = d3.forceSimulation(data.nodes)
+                .force('link', d3.forceLink(data.links).id(d => d.id).distance(100))
+                .force('charge', d3.forceManyBody().strength(-300))
+                .force('center', d3.forceCenter(width / 2, height / 2));
+
+            // Create the SVG container
+            const svg = d3.select('#graph')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+
+            // Define the graph container for zoom
+            const container = svg.append('g');
+
+            // Define arrow markers for the links
+            container.append('defs').selectAll('marker')
+                .data(['Inherits', 'Implements', 'Depends'])
+                .enter().append('marker')
+                .attr('id', d => d)
+                .attr('viewBox', '0 -5 10 10')
+                .attr('refX', 20)
+                .attr('refY', 0)
+                .attr('markerWidth', 6)
+                .attr('markerHeight', 6)
+                .attr('orient', 'auto')
+                .append('path')
+                .attr('d', 'M0,-5L10,0L0,5')
+                .attr('fill', d => d === 'Inherits' ? '#ff7700' : 
+                                  d === 'Implements' ? '#4CAF50' : 
+                                  '#999');
+
+            // Create the links
+            const link = container.append('g')
+                .attr('class', 'links')
+                .selectAll('line')
+                .data(data.links)
+                .enter().append('line')
+                .attr('class', 'link')
+                .attr('stroke', d => d.type === 'Inherits' ? '#ff7700' : 
+                                   d.type === 'Implements' ? '#4CAF50' : 
+                                   '#999')
+                .attr('stroke-width', 1.5)
+                .attr('marker-end', d => `url(#${d.type})`);
+
+            // Create the nodes
+            const node = container.append('g')
+                .attr('class', 'nodes')
+                .selectAll('circle')
+                .data(data.nodes)
+                .enter().append('circle')
+                .attr('class', 'node')
+                .attr('r', d => {
+                    switch(d.group) {
+                        case 'controller': return 10;
+                        case 'service': return 8;
+                        case 'repository': return 8;
+                        case 'interface': return 6;
+                        default: return 7;
+                    }
+                })
+                .attr('fill', d => {
+                    switch(d.group) {
+                        case 'controller': return '#ff7700';
+                        case 'service': return '#4CAF50';
+                        case 'repository': return '#2196F3';
+                        case 'interface': return '#9C27B0';
+                        case 'model': return '#FFC107';
+                        default: return '#607D8B';
+                    }
+                })
+                .call(d3.drag()
+                    .on('start', dragstarted)
+                    .on('drag', dragged)
+                    .on('end', dragended));
+
+            // Add labels to nodes
+            const label = container.append('g')
+                .attr('class', 'labels')
+                .selectAll('text')
+                .data(data.nodes)
+                .enter().append('text')
+                .attr('class', 'node-label')
+                .attr('dx', 12)
+                .attr('dy', '.35em')
+                .text(d => d.name);
+
+            // Add tooltips to nodes
+            node.on('mouseover', function(event, d) {
+                tooltip.transition()
+                    .style('opacity', .9);
+                tooltip.html(`
+                    <strong>${d.name}</strong><br>
+                    Type: ${d.group}<br>
+                    Namespace: ${d.namespace || 'N/A'}
+                `)
+                .style('left', (event.pageX + 10) + 'px')
+                .style('top', (event.pageY - 28) + 'px');
+            })
+            .on('mouseout', function() {
+                tooltip.transition()
+                    .style('opacity', 0);
+            });
+
+            // Update positions on each tick of the simulation
+            simulation.on('tick', () => {
+                link
+                    .attr('x1', d => d.source.x)
+                    .attr('y1', d => d.source.y)
+                    .attr('x2', d => d.target.x)
+                    .attr('y2', d => d.target.y);
+
+                node
+                    .attr('cx', d => d.x)
+                    .attr('cy', d => d.y);
+
+                label
+                    .attr('x', d => d.x)
+                    .attr('y', d => d.y);
+            });
+
+            // Drag functions
+            function dragstarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+
+            function dragged(event, d) {
+                d.fx = event.x;
+                d.fy = event.y;
+            }
+
+            function dragended(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+
+            // Add zoom functionality
+            const zoom = d3.zoom()
+                .scaleExtent([0.1, 10])
+                .on('zoom', (event) => {
+                    container.attr('transform', event.transform);
+                });
+
+            svg.call(zoom);
+
+            // Controls event handlers
+            document.getElementById('forceStrength').addEventListener('input', function() {
+                simulation.force('charge').strength(-this.value);
+                simulation.alpha(1).restart();
+            });
+
+            document.getElementById('linkDistance').addEventListener('input', function() {
+                simulation.force('link').distance(this.value);
+                simulation.alpha(1).restart();
+            });
+
+            document.getElementById('resetZoom').addEventListener('click', function() {
+                svg.transition().duration(750).call(
+                    zoom.transform,
+                    d3.zoomIdentity
+                );
+            });
+            
+            document.getElementById('expandAll').addEventListener('click', function() {
+                // Expand the graph by increasing node repulsion
+                simulation.force('charge').strength(-800);
+                simulation.alpha(1).restart();
+            });
+        }
+    </script>
+</body>
+</html>
