@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CodeKnowledgeGraphGenerator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e2de9c1d709ffa8cbd041983772a8e91de53b8c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af23b5844eb76285a850e3167d45556108351c67")]
 [assembly: System.Reflection.AssemblyProductAttribute("CodeKnowledgeGraphGenerator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CodeKnowledgeGraphGenerator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
