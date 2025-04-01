@@ -1,6 +1,7 @@
-namespace CodeKnowledgeGraphGenerator.Models
-{
-    public class CodeEntity
+using CodeKnowledgeGraphGenerator.TestNamespace;
+namespace CodeKnowledgeGraphGenerator.Models;
+ 
+    public class CodeEntity : CodeKnowledgeGraphGenerator.TestNamespace.BaseClass
     {
         public string Id { get; set; }
         public string Name { get; set; }
@@ -12,4 +13,4 @@ namespace CodeKnowledgeGraphGenerator.Models
         public bool IsRepository { get; set; }
         public string Namespace { get; set; }
     }
-}
+ 

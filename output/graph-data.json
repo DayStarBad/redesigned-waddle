@@ -1,65 +1,91 @@
 {
   "nodes": [
     {
-      "id": "Finances.BudgetingApplication.Infrastructure.Data.BudgetingAppDbContext",
-      "name": "BudgetingAppDbContext",
+      "id": "CodeKnowledgeGraphGenerator.TestNamespace.BaseClass",
+      "name": "BaseClass",
       "group": "class",
-      "namespaceName": "Finances.BudgetingApplication.Infrastructure.Data"
+      "namespaceName": "CodeKnowledgeGraphGenerator.TestNamespace"
     },
     {
-      "id": "Finances.BudgetingApplication.Models.Account",
-      "name": "Account",
-      "group": "model",
-      "namespaceName": "Finances.BudgetingApplication.Models"
-    },
-    {
-      "id": "Finances.BudgetingApplication.Models.BankTransaction",
-      "name": "BankTransaction",
-      "group": "model",
-      "namespaceName": "Finances.BudgetingApplication.Models"
-    },
-    {
-      "id": "Finances.BudgetingApplication.Models.BudgetPlan",
-      "name": "BudgetPlan",
-      "group": "model",
-      "namespaceName": "Finances.BudgetingApplication.Models"
-    },
-    {
-      "id": "Finances.BudgetingApplication.Models.BudgetPlanItem",
-      "name": "BudgetPlanItem",
-      "group": "model",
-      "namespaceName": "Finances.BudgetingApplication.Models"
-    },
-    {
-      "id": "Finances.BudgetingApplication.Models.Category",
-      "name": "Category",
-      "group": "model",
-      "namespaceName": "Finances.BudgetingApplication.Models"
-    },
-    {
-      "id": "Finances.BudgetingApplication.Models.FinancialTransaction",
-      "name": "FinancialTransaction",
-      "group": "model",
-      "namespaceName": "Finances.BudgetingApplication.Models"
-    },
-    {
-      "id": "Finances.BudgetingApplication.Models.Tag",
-      "name": "Tag",
-      "group": "model",
-      "namespaceName": "Finances.BudgetingApplication.Models"
-    },
-    {
-      "id": "Finances.BudgetingApplication.Models.TransactionTag",
-      "name": "TransactionTag",
-      "group": "model",
-      "namespaceName": "Finances.BudgetingApplication.Models"
-    },
-    {
-      "id": "Finances.BudgetingApplication.Services.BankTransactionImporter",
-      "name": "BankTransactionImporter",
+      "id": "CodeKnowledgeGraphGenerator.TestNamespace.DerivedClass",
+      "name": "DerivedClass",
       "group": "class",
-      "namespaceName": "Finances.BudgetingApplication.Services"
+      "namespaceName": "CodeKnowledgeGraphGenerator.TestNamespace"
+    },
+    {
+      "id": "CodeKnowledgeGraphGenerator.TestNamespace.ServiceImplementation",
+      "name": "ServiceImplementation",
+      "group": "class",
+      "namespaceName": "CodeKnowledgeGraphGenerator.TestNamespace"
+    },
+    {
+      "id": "CodeKnowledgeGraphGenerator.TestNamespace.Controller",
+      "name": "Controller",
+      "group": "controller",
+      "namespaceName": "CodeKnowledgeGraphGenerator.TestNamespace"
+    },
+    {
+      "id": "CodeKnowledgeGraphGenerator.TestNamespace.IService",
+      "name": "IService",
+      "group": "interface",
+      "namespaceName": "CodeKnowledgeGraphGenerator.TestNamespace"
+    },
+    {
+      "id": "CodeKnowledgeGraphGenerator.CodeAnalyzer",
+      "name": "CodeAnalyzer",
+      "group": "class",
+      "namespaceName": "CodeKnowledgeGraphGenerator"
+    },
+    {
+      "id": "CodeKnowledgeGraphGenerator.GraphExporter",
+      "name": "GraphExporter",
+      "group": "class",
+      "namespaceName": "CodeKnowledgeGraphGenerator"
+    },
+    {
+      "id": "CodeKnowledgeGraphGenerator.Models.CodeEntity",
+      "name": "CodeEntity",
+      "group": "model",
+      "namespaceName": "CodeKnowledgeGraphGenerator.Models"
+    },
+    {
+      "id": "CodeKnowledgeGraphGenerator.Models.CodeRelationship",
+      "name": "CodeRelationship",
+      "group": "model",
+      "namespaceName": "CodeKnowledgeGraphGenerator.Models"
+    },
+    {
+      "id": "CodeKnowledgeGraphGenerator.Program",
+      "name": "Program",
+      "group": "class",
+      "namespaceName": "CodeKnowledgeGraphGenerator"
     }
   ],
-  "links": []
+  "links": [
+    {
+      "source": "CodeKnowledgeGraphGenerator.TestNamespace.DerivedClass",
+      "target": "CodeKnowledgeGraphGenerator.TestNamespace.BaseClass",
+      "type": "Inherits"
+    },
+    {
+      "source": "CodeKnowledgeGraphGenerator.TestNamespace.ServiceImplementation",
+      "target": "CodeKnowledgeGraphGenerator.TestNamespace.IService",
+      "type": "Implements"
+    },
+    {
+      "source": "CodeKnowledgeGraphGenerator.TestNamespace.Controller",
+      "target": "CodeKnowledgeGraphGenerator.TestNamespace.IService",
+      "type": "Depends"
+    },
+    {
+      "source": "CodeKnowledgeGraphGenerator.TestNamespace.Controller",
+      "target": "CodeKnowledgeGraphGenerator.TestNamespace.BaseClass",
+      "type": "Depends"
+    },
+    {
+      "source": "CodeKnowledgeGraphGenerator.Models.CodeEntity",
+      "target": "CodeKnowledgeGraphGenerator.TestNamespace.BaseClass",
+      "type": "Inherits"
+    }
+  ]
 }

@@ -83,11 +83,11 @@
         <h3>Controls</h3>
         <div>
             <label>Force Strength:</label>
-            <input title="t" type="range" id="forceStrength" min="10" max="1000" value="300">
+            <input type="range" id="forceStrength" min="10" max="1000" value="300">
         </div>
         <div>
             <label>Link Distance:</label>
-            <input title="range" id="linkDistance" min="20" max="300" value="100">
+            <input type="range" id="linkDistance" min="20" max="300" value="100">
         </div>
         <div>
             <button id="resetZoom">Reset Zoom</button>
@@ -114,11 +114,13 @@
     
     <script>
         // Load the graph data
-        fetch('graph-data.json')
+        fetch('/output/graph-data.json')
             .then(response => response.json())
             .then(data => createGraph(data));
 
         function createGraph(data) {
+            console.log("Loaded data:", data); // Debug output
+            
             const width = window.innerWidth;
             const height = window.innerHeight;
             const tooltip = d3.select('.tooltip');
@@ -217,7 +219,7 @@
                 tooltip.html(`
                     <strong>${d.name}</strong><br>
                     Type: ${d.group}<br>
-                    Namespace: ${d.namespace || 'N/A'}
+                    Namespace: ${d.namespaceName || 'N/A'}
                 `)
                 .style('left', (event.pageX + 10) + 'px')
                 .style('top', (event.pageY - 28) + 'px');
